@@ -22,7 +22,7 @@ def theta_counts(image_theta):
 def counts_norm(counts):
     return counts/np.sum(counts)
 
-def query(sample, count_norm_db, n_queries = 6):
+def query(sample, count_norm_db, n_images = 6):
     
     theta = theta_transform(gradient_orientation(sample))
     _, theta_count = theta_counts(theta)
@@ -33,4 +33,4 @@ def query(sample, count_norm_db, n_queries = 6):
     for count_norm_sample in count_norm_db:
         dist.append(distance.euclidean(count_norm,count_norm_sample))
     
-    return np.argsort(dist)[:n_queries]
+    return np.argsort(dist)[:n_images]
